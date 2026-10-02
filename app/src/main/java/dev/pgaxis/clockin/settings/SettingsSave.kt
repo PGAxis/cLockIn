@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import dev.pgaxis.axs.AxsBoundObject
 import dev.pgaxis.axs.AxsFile
+import dev.pgaxis.clockin.Theme
 import dev.pgaxis.clockin.models.MonthTime
 import java.io.File
 import kotlin.properties.ReadWriteProperty
@@ -31,7 +32,7 @@ class SettingsSave private constructor(context: Context): ISettings {
 
     // --- AXS setup ---
     private val axsFile = AxsFile(axsPath)
-    private lateinit var boundSettings: AxsBoundObject<SettingsData>
+    private var boundSettings: AxsBoundObject<SettingsData>
 
     // --- Setting fun ---
     private fun <V : Any> setting(
@@ -44,26 +45,28 @@ class SettingsSave private constructor(context: Context): ISettings {
 
         override fun setValue(thisRef: Any?, property: KProperty<*>, value: V) {
             state = value
-            if (::boundSettings.isInitialized && !isInitializing) boundSettings.setValue(prop, value)
+            if (!isInitializing) boundSettings.setValue(prop, value)
         }
     }
 
     override var times by setting(emptyList(), SettingsData::times)
     override var isClockedIn by setting(false, SettingsData::isClockedIn)
+    override var theme by setting(Theme.CYAN, SettingsData::theme)
 
     // -- Data class
     @Keep
     data class SettingsData(
         var times: List<MonthTime> = emptyList(),
-        var isClockedIn: Boolean = false
+        var isClockedIn: Boolean = false,
+        var theme: Theme = Theme.CYAN
     )
 
     fun flush() {
-        if (::boundSettings.isInitialized) boundSettings.flush()
+        boundSettings.flush()
     }
 
     init {
-        axsFile.setLogging(on = false)
+        axsFile.setLogging(on = true)
         axsFile.open()
 
         try {
@@ -71,10 +74,11 @@ class SettingsSave private constructor(context: Context): ISettings {
 
             val s = boundSettings.get()
 
+            Log.d("Settings", "$s")
+
             times = s.times
             isClockedIn = s.isClockedIn
-
-            isInitializing = false
+            theme = s.theme
         } catch (e: Exception) {
             Log.d("SettingsSaveError", e.toString())
             Log.d("SettingsSaveError", e.stackTraceToString())

@@ -1,11 +1,11 @@
 package dev.pgaxis.clockin.screens
 
-import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,13 +16,16 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -32,7 +35,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.pgaxis.clockin.R
 
 @Composable
-fun MainScreen(vm: MainViewModel = viewModel()) {
+fun MainScreen(
+    onCalendar: () -> Unit,
+    onSettings: () -> Unit,
+    vm: MainViewModel = viewModel()
+) {
     Box(Modifier
         .fillMaxSize()
         .background(MaterialTheme.colorScheme.background)
@@ -56,6 +63,30 @@ fun MainScreen(vm: MainViewModel = viewModel()) {
                     modifier = Modifier.weight(1f),
                     color = MaterialTheme.colorScheme.primary
                 )
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                IconButton(
+                    onClick = onCalendar,
+                    shape = RoundedCornerShape(0.dp),
+                    modifier = Modifier.size(45.dp).padding(horizontal = 5.dp)
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.calendar),
+                        contentDescription = "Calendar",
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                }
+
+                Spacer(Modifier.width(4.dp))
+
+                IconButton(onClick = onSettings, modifier = Modifier.size(35.dp)) {
+                    Icon(
+                        painter = painterResource(R.drawable.settings),
+                        contentDescription = "Settings",
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                }
             }
 
             BoxWithConstraints(

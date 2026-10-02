@@ -29,6 +29,6 @@ data class MonthTime(
         get() = month.month.name.lowercase()
             .replaceFirstChar { it.uppercase() } + " " + month.year
 
-    val activeClock: ClockEntry
-        get() = entries.last()
+    val activeClock: ClockEntry?
+        get() = entries.lastOrNull()
 }

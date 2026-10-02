@@ -1,6 +1,5 @@
 package dev.pgaxis.clockin
 
-import android.net.Uri
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -9,8 +8,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import dev.pgaxis.clockin.screens.CalendarScreen
 import dev.pgaxis.clockin.screens.MainScreen
 import dev.pgaxis.clockin.screens.MainViewModel
+import dev.pgaxis.clockin.screens.SettingsScreen
 
 @Composable
 fun AppNavigation() {
@@ -27,7 +28,19 @@ fun AppNavigation() {
         NavHost(navController = navController, startDestination = "main") {
             composable("main") {
                 MainScreen(
+                    onCalendar = { navController.navigate("calendar") },
+                    onSettings = { navController.navigate("settings") },
                     vm = mainViewModel
+                )
+            }
+            composable("calendar") {
+                CalendarScreen(
+                    onBack = { popBack() }
+                )
+            }
+            composable("settings") {
+                SettingsScreen(
+                    onBack = { popBack() }
                 )
             }
         }

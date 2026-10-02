@@ -1,54 +1,293 @@
 package dev.pgaxis.clockin.ui.theme
 
-import android.app.Activity
-import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.dynamicDarkColorScheme
-import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.graphics.Color
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+val ClockinCyanScheme = darkColorScheme(
+    primary = CyanPrimary,
+    onPrimary = TextWhitePrimary,
+    primaryContainer = SurfaceVariantCyanDark,
+    onPrimaryContainer = TextWhitePrimary,
+
+    secondary = BlueSecondary,
+    onSecondary = TextWhitePrimary,
+    secondaryContainer = CardCyanDark,
+    onSecondaryContainer = TextWhitePrimary,
+
+    tertiary = BlueTertiary,
+    onTertiary = TextWhitePrimary,
+    tertiaryContainer = SurfaceVariantCyanDark,
+    onTertiaryContainer = TextWhitePrimary,
+
+    background = BackgroundCyanDark,
+    onBackground = TextWhitePrimary,
+
+    surface = SurfaceCyanDark,
+    onSurface = TextWhitePrimary,
+    surfaceVariant = SurfaceVariantCyanDark,
+    onSurfaceVariant = TextCyanSecondary,
+
+    outline = BorderCyanColor,
+    outlineVariant = DividerCyanColor,
+
+    error = PopupError,
+    onError = TextWhitePrimary,
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+val ClockinGrayscaleScheme = darkColorScheme(
+    primary = Gray300,
+    onPrimary = TextWhitePrimary,
+    primaryContainer = Gray900,
+    onPrimaryContainer = TextWhitePrimary,
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    secondary = Gray400,
+    onSecondary = TextWhitePrimary,
+    secondaryContainer = OffBlack,
+    onSecondaryContainer = TextWhitePrimary,
+
+    tertiary = Gray500,
+    onTertiary = TextWhitePrimary,
+    tertiaryContainer = Gray900,
+    onTertiaryContainer = TextWhitePrimary,
+
+    background = Gray950,
+    onBackground = TextWhitePrimary,
+
+    surface = OffBlack,
+    onSurface = TextWhitePrimary,
+    surfaceVariant = Gray900,
+    onSurfaceVariant = TextCyanSecondary,
+
+    outline = Gray600,
+    outlineVariant = Gray200,
+
+    error = PopupError,
+    onError = TextWhitePrimary,
+)
+
+val ClockinEmberScheme = darkColorScheme(
+    primary = EmberPrimary,
+    onPrimary = TextWhitePrimary,
+    primaryContainer = EmberSurfaceVariant,
+    onPrimaryContainer = TextWhitePrimary,
+
+    secondary = EmberSecondary,
+    onSecondary = TextWhitePrimary,
+    secondaryContainer = EmberCard,
+    onSecondaryContainer = TextWhitePrimary,
+
+    tertiary = EmberTertiary,
+    onTertiary = TextWhitePrimary,
+    tertiaryContainer = EmberSurfaceVariant,
+    onTertiaryContainer = TextWhitePrimary,
+
+    background = EmberBackground,
+    onBackground = TextWhitePrimary,
+
+    surface = EmberSurface,
+    onSurface = TextWhitePrimary,
+    surfaceVariant = EmberSurfaceVariant,
+    onSurfaceVariant = TextEmberSecondary,
+
+    outline = EmberBorder,
+    outlineVariant = EmberDivider,
+
+    error = PopupError,
+    onError = TextWhitePrimary,
+)
+
+val ClockinAetherScheme = darkColorScheme(
+    primary = AetherPrimary,
+    onPrimary = TextWhitePrimary,
+    primaryContainer = AetherSurfaceVariant,
+    onPrimaryContainer = TextWhitePrimary,
+
+    secondary = AetherSecondary,
+    onSecondary = TextWhitePrimary,
+    secondaryContainer = AetherCard,
+    onSecondaryContainer = TextWhitePrimary,
+
+    tertiary = AetherTertiary,
+    onTertiary = TextWhitePrimary,
+    tertiaryContainer = AetherSurfaceVariant,
+    onTertiaryContainer = TextWhitePrimary,
+
+    background = AetherBackground,
+    onBackground = TextWhitePrimary,
+
+    surface = AetherSurface,
+    onSurface = TextWhitePrimary,
+    surfaceVariant = AetherSurfaceVariant,
+    onSurfaceVariant = TextAetherSecondary,
+
+    outline = AetherBorder,
+    outlineVariant = AetherDivider,
+
+    error = PopupError,
+    onError = TextWhitePrimary,
+)
+
+val ClockinPhosphorScheme = darkColorScheme(
+    primary = PhosphorPrimary,
+    onPrimary = Color(0xFF002616),
+    primaryContainer = PhosphorSurfaceVariant,
+    onPrimaryContainer = TextWhitePrimary,
+
+    secondary = PhosphorSecondary,
+    onSecondary = TextWhitePrimary,
+    secondaryContainer = PhosphorCard,
+    onSecondaryContainer = TextWhitePrimary,
+
+    tertiary = PhosphorTertiary,
+    onTertiary = Color(0xFF002616),
+    tertiaryContainer = PhosphorSurfaceVariant,
+    onTertiaryContainer = TextWhitePrimary,
+
+    background = PhosphorBackground,
+    onBackground = TextWhitePrimary,
+
+    surface = PhosphorSurface,
+    onSurface = TextWhitePrimary,
+    surfaceVariant = PhosphorSurfaceVariant,
+    onSurfaceVariant = TextPhosphorSecondary,
+
+    outline = PhosphorBorder,
+    outlineVariant = PhosphorDivider,
+
+    error = PopupError,
+    onError = TextWhitePrimary,
+)
+
+val ClockinChalkScheme = lightColorScheme(
+    primary = ChalkPrimary,
+    onPrimary = TextWhitePrimary,
+    primaryContainer = ChalkSurfaceVariant,
+    onPrimaryContainer = TextDarkPrimary,
+
+    secondary = ChalkSecondary,
+    onSecondary = TextWhitePrimary,
+    secondaryContainer = ChalkCard,
+    onSecondaryContainer = TextDarkPrimary,
+
+    tertiary = ChalkTertiary,
+    onTertiary = TextWhitePrimary,
+    tertiaryContainer = ChalkSurfaceVariant,
+    onTertiaryContainer = TextDarkPrimary,
+
+    background = ChalkBackground,
+    onBackground = TextDarkPrimary,
+
+    surface = ChalkSurface,
+    onSurface = TextDarkPrimary,
+    surfaceVariant = ChalkSurfaceVariant,
+    onSurfaceVariant = TextChalkSecondary,
+
+    outline = ChalkBorder,
+    outlineVariant = ChalkDivider,
+
+    error = PopupError,
+    onError = TextWhitePrimary,
+)
+
+val ClockinSoleilScheme = lightColorScheme(
+    primary = SoleilPrimary,
+    onPrimary = TextWhitePrimary,
+    primaryContainer = SoleilSurfaceVariant,
+    onPrimaryContainer = TextDarkPrimary,
+
+    secondary = SoleilSecondary,
+    onSecondary = TextWhitePrimary,
+    secondaryContainer = SoleilCard,
+    onSecondaryContainer = TextDarkPrimary,
+
+    tertiary = SoleilTertiary,
+    onTertiary = TextWhitePrimary,
+    tertiaryContainer = SoleilSurfaceVariant,
+    onTertiaryContainer = TextDarkPrimary,
+
+    background = SoleilBackground,
+    onBackground = TextDarkPrimary,
+
+    surface = SoleilSurface,
+    onSurface = TextDarkPrimary,
+    surfaceVariant = SoleilSurfaceVariant,
+    onSurfaceVariant = TextSoleilSecondary,
+
+    outline = SoleilBorder,
+    outlineVariant = SoleilDivider,
+
+    error = PopupError,
+    onError = TextWhitePrimary,
+)
+
+val ClockinBordoScheme = darkColorScheme(
+    primary = BordoPrimary,
+    onPrimary = TextWhitePrimary,
+    primaryContainer = BordoSurfaceVariant,
+    onPrimaryContainer = TextWhitePrimary,
+
+    secondary = BordoSecondary,
+    onSecondary = TextWhitePrimary,
+    secondaryContainer = BordoCard,
+    onSecondaryContainer = TextWhitePrimary,
+
+    tertiary = BordoTertiary,
+    onTertiary = TextWhitePrimary,
+    tertiaryContainer = BordoSurfaceVariant,
+    onTertiaryContainer = TextWhitePrimary,
+
+    background = BordoBackground,
+    onBackground = TextWhitePrimary,
+
+    surface = BordoSurface,
+    onSurface = TextWhitePrimary,
+    surfaceVariant = BordoSurfaceVariant,
+    onSurfaceVariant = TextBordoSecondary,
+
+    outline = BordoBorder,
+    outlineVariant = BordoDivider,
+
+    error = PopupError,
+    onError = TextWhitePrimary,
+)
+
+val ClockinVoidScheme = darkColorScheme(
+    primary = VoidPrimary,
+    onPrimary = Color(0xFF001A17),
+    primaryContainer = VoidSurfaceVariant,
+    onPrimaryContainer = TextWhitePrimary,
+
+    secondary = VoidSecondary,
+    onSecondary = TextWhitePrimary,
+    secondaryContainer = VoidCard,
+    onSecondaryContainer = TextWhitePrimary,
+
+    tertiary = VoidTertiary,
+    onTertiary = Color(0xFF001A17),
+    tertiaryContainer = VoidSurfaceVariant,
+    onTertiaryContainer = TextWhitePrimary,
+
+    background = VoidBackground,
+    onBackground = TextWhitePrimary,
+
+    surface = VoidSurface,
+    onSurface = TextWhitePrimary,
+    surfaceVariant = VoidSurfaceVariant,
+    onSurfaceVariant = TextVoidSecondary,
+
+    outline = VoidBorder,
+    outlineVariant = VoidDivider,
+
+    error = PopupError,
+    onError = TextWhitePrimary,
 )
 
 @Composable
-fun ClockinTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
-) {
-    val colorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-
+fun ClockinTheme(colorScheme: ColorScheme, content: @Composable () -> Unit) {
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
